@@ -1,1 +1,1 @@
-add_executable(cpp-template main.cpp)
+add_executable(cpp-template main.cpp DCMotor.cpp AngleSensor.cpp)
