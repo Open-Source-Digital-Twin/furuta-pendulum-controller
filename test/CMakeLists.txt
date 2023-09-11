@@ -9,6 +9,10 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
+add_subdirectory(config)
+add_subdirectory(controller)
+add_subdirectory(hal)
+
 add_executable(
   hello_test
   hello_test.cpp
