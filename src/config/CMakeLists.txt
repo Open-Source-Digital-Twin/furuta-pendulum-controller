@@ -1,5 +1,13 @@
-set(ConfigLibSources 
-    Configuration.cpp
+add_library(ConfigLib)
+
+target_sources(ConfigLib
+  PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}/Configuration.cpp
+  PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}/Configuration.h
     )
 
-add_library(ConfigLib ${ConfigLibSources})
+target_include_directories(ConfigLib
+  PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}
+    )
