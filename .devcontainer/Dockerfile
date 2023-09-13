@@ -16,7 +16,13 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
 
 # [Optional] Uncomment this section to install additional packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends lsb-release wget software-properties-common gnupg g++ git
+    && apt-get -y install --no-install-recommends \
+    lsb-release \
+    wget \
+    software-properties-common \
+    gnupg \
+    libprotobuf-dev \
+    protobuf-compiler
 
 COPY ./reinstall-llvm.sh /tmp/
 
@@ -24,6 +30,3 @@ RUN if [ "${REINSTALL_LLVM_VERSION}" != "none" ]; then \
         chmod +x /tmp/reinstall-llvm.sh && /tmp/reinstall-llvm.sh ${REINSTALL_LLVM_VERSION}; \
     fi \
     && rm -f /tmp/reinstall-llvm.sh
-
-
-RUN 
