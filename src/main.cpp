@@ -1,7 +1,7 @@
-#include "AngleSensor.h"
-#include "DCMotor.h"
 #include <iostream>
 #include <memory>
+#include "hal/AngleSensor.h"
+#include "hal/DCMotor.h"
 
 int main(int, char**)
 {
