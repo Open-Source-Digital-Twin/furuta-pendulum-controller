@@ -3,12 +3,16 @@
 
 #include "SensorInterface.h"
 
-class AngleSensor : public SensorInterface {
+// int is just a placeholder
+class AngleSensor : public SensorInterface<double, int> {
 public:
     explicit AngleSensor(double initialAngle);
-    double GetAngle() override;
+    double GetValue(int gpio) override;
 
 private:
+    double ValidateValue(double angle) override;
+    static const double kMinAngle;
+    static const double kMaxAngle;
     double angle_;
 };
 

@@ -3,7 +3,7 @@
 
 #include "ActuatorInterface.h"
 
-class DCMotor : public ActuatorInterface {
+class DCMotor : public ActuatorInterface<double> {
 public:
     explicit DCMotor(double initialState);
     void SetState(double state) override;

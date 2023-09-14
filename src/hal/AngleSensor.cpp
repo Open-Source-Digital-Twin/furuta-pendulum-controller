@@ -1,8 +1,26 @@
 #include "AngleSensor.h"
 
-AngleSensor::AngleSensor(double initialAngle) : angle_(initialAngle) {}
+const double AngleSensor::kMinAngle = 0.0;
+const double AngleSensor::kMaxAngle = 360.0;
 
-double AngleSensor::GetAngle(){
-    //get here
+AngleSensor::AngleSensor(double initialAngle)
+    : angle_(initialAngle)
+{
+}
+
+double AngleSensor::GetValue(int gpio)
+{
+    // get here
     return angle_;
+}
+
+double AngleSensor::ValidateValue(double angle)
+{
+    if (angle < kMinAngle) {
+        return kMinAngle;
+    }
+    if (angle > kMaxAngle) {
+        return kMaxAngle;
+    }
+    return angle;
 }
