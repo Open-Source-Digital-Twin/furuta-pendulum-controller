@@ -1,11 +1,11 @@
 #include "DCMotor.h"
 
 DCMotor::DCMotor(double initialState)
-    : motorState(initialState)
+    : motorState_(initialState)
 {
 }
 
-void DCMotor::setState(double state)
+void DCMotor::SetState(double state)
 {
-    motorState = state;
+    motorState_ = state;
 }

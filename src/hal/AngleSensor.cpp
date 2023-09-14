@@ -1,8 +1,8 @@
 #include "AngleSensor.h"
 
-AngleSensor::AngleSensor(double initialAngle) : angle(initialAngle) {}
+AngleSensor::AngleSensor(double initialAngle) : angle_(initialAngle) {}
 
-double AngleSensor::getAngle(){
+double AngleSensor::GetAngle(){
     //get here
-    return angle;
+    return angle_;
 }

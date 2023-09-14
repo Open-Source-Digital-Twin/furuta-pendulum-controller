@@ -3,7 +3,7 @@
 
 class SensorInterface {
 public:
-    virtual double getAngle() = 0;
+    virtual double GetAngle() = 0;
 };
 
 #endif

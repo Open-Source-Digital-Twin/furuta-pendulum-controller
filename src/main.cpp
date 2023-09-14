@@ -7,7 +7,7 @@
 
 int main(int, char**)
 {
-    auto dcMotor = std::make_unique<DCMotor>(0.0);
+    auto dc_motor = std::make_unique<DCMotor>(0.0);
 
     return 0;
 }

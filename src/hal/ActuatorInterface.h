@@ -3,7 +3,7 @@
 
 class ActuatorInterface {
 public:
-    virtual void setState(double state) = 0;
+    virtual void SetState(double state) = 0;
 };
 
 #endif

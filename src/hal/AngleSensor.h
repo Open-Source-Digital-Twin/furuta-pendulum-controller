@@ -5,11 +5,11 @@
 
 class AngleSensor : public SensorInterface {
 public:
-    AngleSensor(double initialAngle);
-    double getAngle() override;
+    explicit AngleSensor(double initialAngle);
+    double GetAngle() override;
 
 private:
-    double angle;
+    double angle_;
 };
 
 #endif

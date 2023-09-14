@@ -2,10 +2,11 @@
 #define ANGLE_SENSOR_PROTO_H
 
 #include "SensorInterface.h"
-// #include "sensors.pb.h"
+#include "actuators.pb.h"
 
 class AngleSensorProto : public SensorInterface {
-
+public:
+    
 };
 
 #endif
