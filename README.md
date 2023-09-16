@@ -14,5 +14,5 @@ GTest 1.12.0 is available for testing.
 
 ## Availability
 
-This template is inteded to be used with VSCode on a development container and targeting/packaging to Linux.
+This template is intended to be used with VSCode on a development container and targeting/packaging to Linux.
 The environment contains some extensions that will aid the development.
