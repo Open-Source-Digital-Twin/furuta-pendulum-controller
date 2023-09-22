@@ -1,10 +1,16 @@
 #include "AngleSensor.h"
 
-const double AngleSensor::kMinAngle = 0.0;
-const double AngleSensor::kMaxAngle = 360.0;
+namespace Hal {
+
+namespace {
+    const double kMinAngle = 0.0;
+    const double kMaxAngle = 360.0;
+}
 
 AngleSensor::AngleSensor(double initialAngle)
-    : angle_(initialAngle)
+    : kMinAngle(0.0)
+    , kMaxAngle(360.0)
+    , angle_(initialAngle) // Initialize const members in the member initialization list
 {
 }
 
@@ -14,13 +20,4 @@ double AngleSensor::GetValue(int gpio)
     return angle_;
 }
 
-double AngleSensor::ValidateValue(double angle)
-{
-    if (angle < kMinAngle) {
-        return kMinAngle;
-    }
-    if (angle > kMaxAngle) {
-        return kMaxAngle;
-    }
-    return angle;
 }

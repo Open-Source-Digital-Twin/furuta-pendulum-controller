@@ -1,4 +1,7 @@
 #include "AngleSensorProto.h"
+#include <algorithm>
+
+namespace Hal {
 
 const double AngleSensorProto::kMinAngle = 0.0;
 const double AngleSensorProto::kMaxAngle = 360.0;
@@ -12,17 +15,8 @@ double AngleSensorProto::GetValue(google::protobuf::Message& sensorMessage)
 {
 
     double angle = sensorMessage.GetReflection()->GetDouble(sensorMessage, sensorMessage.GetDescriptor()->FindFieldByName("angle"));
-    angle = ValidateValue(angle);
+    angle = std::clamp(angle, kMinAngle, kMaxAngle);
     return angle;
 }
 
-double AngleSensorProto::ValidateValue(double angle)
-{
-    if (angle < kMinAngle) {
-        return kMinAngle;
-    }
-    if (angle > kMaxAngle) {
-        return kMaxAngle;
-    }
-    return angle;
 }

@@ -4,6 +4,8 @@
 #include "ActuatorInterface.h"
 #include <google/protobuf/message.h>
 
+namespace Hal {
+
 class DCMotorProto : public ActuatorInterface<google::protobuf::Message&> {
 public:
     explicit DCMotorProto(double initialState);
@@ -13,4 +15,6 @@ private:
     double state_;
 };
 
-#endif
+}
+
+#endif // DC_MOTOR_PROTO_H
