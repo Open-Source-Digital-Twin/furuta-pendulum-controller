@@ -8,13 +8,13 @@ namespace {
 }
 
 AngleSensor::AngleSensor(double initialAngle)
-    : kMinAngle(0.0)
+    : angle_(initialAngle)
+    , kMinAngle(0.0)
     , kMaxAngle(360.0)
-    , angle_(initialAngle) // Initialize const members in the member initialization list
 {
 }
 
-double AngleSensor::GetValue(int gpio)
+double AngleSensor::GetValue(int /* unused */)
 {
     // get here
     return angle_;

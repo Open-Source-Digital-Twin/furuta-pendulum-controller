@@ -9,7 +9,7 @@ namespace Hal {
 class AngleSensor : public SensorInterface<double, int> {
 public:
     explicit AngleSensor(double initialAngle);
-    [[nodiscard]] double GetValue(int gpio) override;
+    [[nodiscard]] double GetValue(int /* unused */) override;
 
 private:
     const double kMinAngle;
