@@ -14,8 +14,8 @@ public:
     [[nodiscard]] double GetValue(google::protobuf::Message& sensorMessage) override;
 
 private:
-    static const double kMinAngle;
-    static const double kMaxAngle;
+    const double kMinAngle;
+    const double kMaxAngle;
     double angle_;
 };
 
