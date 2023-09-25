@@ -1,6 +1,6 @@
 /**
  * @file ActuatorInterface.h
- * @author Caio Piccirillo & Luca Lagunas
+ * @author Luca Lagunas
  * @brief A shared templated interface for various types of actuators
  * @version 0.1
  * @date 2023-09-06

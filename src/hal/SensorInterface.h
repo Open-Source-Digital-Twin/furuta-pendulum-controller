@@ -1,6 +1,6 @@
 /**
  * @file SensorInterface.h
- * @author Caio Piccirillo & Luca Lagunas
+ * @author Luca Lagunas
  * @brief A shared templated interface for various types of sensors
  * @version 0.1
  * @date 2023-09-06
