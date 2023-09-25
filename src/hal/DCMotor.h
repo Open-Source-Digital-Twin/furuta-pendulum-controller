@@ -3,13 +3,17 @@
 
 #include "ActuatorInterface.h"
 
-class DCMotor : public ActuatorInterface {
+namespace Hal {
+
+class DCMotor : public ActuatorInterface<double> {
 public:
-    DCMotor(double initialState);
-    void setState(double state) override;
+    explicit DCMotor(double initialState);
+    void SetState(double state) override;
 
 private:
-    double motorState;
+    double motorState_;
 };
 
-#endif
+}
+
+#endif // DC_MOTOR_H

@@ -4,4 +4,4 @@
 class ConfigurationInterface {
 };
 
-#endif
+#endif // CONFIGURATION_INTERFACE_H
