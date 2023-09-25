@@ -31,7 +31,8 @@
 				"llvm-vs-code-extensions.vscode-clangd",
 				"ms-vscode.cmake-tools", // Reference: https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/cmake-settings.md
 				"ms-vscode.cpptools",
-				"matepek.vscode-catch2-test-adapter"
+				"matepek.vscode-catch2-test-adapter",
+				"cschlosser.doxdocgen"
 			],
 		}
 	},
