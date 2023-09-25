@@ -3,8 +3,7 @@
 
 #include "ConfigurationInterface.h"
 
-class Configuration : public ConfigurationInterface{
-
+class Configuration : public ConfigurationInterface {
 };
 
-#endif
+#endif // CONFIGURATION_H

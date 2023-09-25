@@ -3,13 +3,19 @@
 
 #include "SensorInterface.h"
 
-class AngleSensor : public SensorInterface {
+namespace Hal {
+
+// int is just a placeholder
+class AngleSensor : public SensorInterface<double, int> {
 public:
-    AngleSensor(double initialAngle);
-    double getAngle() override;
+    explicit AngleSensor(double initialAngle);
+    [[nodiscard]] double GetValue(int /* unused */) override;
 
 private:
-    double angle;
+    const double kMinAngle;
+    const double kMaxAngle;
+    double angle_;
 };
 
-#endif
+}
+#endif // ANGLE_SENSOR_H
