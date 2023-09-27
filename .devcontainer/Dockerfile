@@ -20,9 +20,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     lsb-release \
     wget \
     software-properties-common \
-    gnupg \
-    libprotobuf-dev \
-    protobuf-compiler
+    gnupg 
 
 COPY ./reinstall-llvm.sh /tmp/
 

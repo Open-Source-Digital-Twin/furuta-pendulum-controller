@@ -11,7 +11,6 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
-
 namespace Hal {
 
 template <typename SensorReturnType, typename SensorInputType>

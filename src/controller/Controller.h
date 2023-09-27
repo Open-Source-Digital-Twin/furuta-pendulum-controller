@@ -1,8 +1,7 @@
 #ifndef CONTROLLER_H
 #define CONTROLLER_H
 
-class Controller{
-
+class Controller {
 };
 
 #endif
