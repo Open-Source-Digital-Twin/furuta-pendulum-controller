@@ -4,6 +4,7 @@ project(cpp-template VERSION 0.1.0)
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(Protobuf REQUIRED)
+find_package(GTest REQUIRED)
 
 include_directories(${Protobuf_INCLUDE_DIRS})
 
