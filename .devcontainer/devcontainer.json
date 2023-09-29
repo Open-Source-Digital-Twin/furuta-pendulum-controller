@@ -27,7 +27,7 @@
 				"cmake.configureOnOpen": true,
 				"cmake.generator": "Ninja",
 				"cmake.configureSettings": {
-					"CMAKE_TOOLCHAIN_FILE": "${env:VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+					"CMAKE_TOOLCHAIN_FILE": "/usr/local/vcpkg/scripts/buildsystems/vcpkg.cmake"
 				}
 			},
 			"extensions": [
