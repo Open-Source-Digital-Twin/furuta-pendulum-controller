@@ -23,7 +23,7 @@ public:
      * @param state Value to set the actuator's state with
      */
     virtual void SetState(ActuatorInputType state) = 0;
-    virtual ~ActuatorInterface() {};
+    virtual ~ActuatorInterface() = default;
 };
 }
 #endif // ACTUATOR_H
