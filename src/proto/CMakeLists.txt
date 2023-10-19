@@ -1,13 +1,14 @@
-# add_library(ProtoLib)
+add_library(ProtoLib)
 
-# target_sources(ProtoLib
-#   PRIVATE
-#     ${CMAKE_CURRENT_LIST_DIR}/sensors.pb.cc
-#   PUBLIC
-#     ${CMAKE_CURRENT_LIST_DIR}/sensors.pb.h
-#     )
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS actuators.proto)
+protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS sensors.proto)
 
-# target_include_directories(ProtoLib
-#   PUBLIC
-#     ${CMAKE_CURRENT_LIST_DIR}
-#     )
+target_sources(ProtoLib
+  PRIVATE
+    ${PROTO_SRCS}
+  PUBLIC
+    ${PROTO_HDRS}
+    )
+
+target_link_libraries(ProtoLib 
+                      protobuf::libprotobuf)
