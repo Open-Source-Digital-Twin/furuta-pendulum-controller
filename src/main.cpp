@@ -9,11 +9,11 @@ int main(int, char**)
 {
     auto dc_motor = std::make_unique<Hal::DCMotor>(0.0);
 
-    auto angle_sensor = Hal::AngleSensor(0.0);
+    [[gnu::unused]] auto angle_sensor = Hal::AngleSensor(0.0);
 
-    auto configuration = Configuration();
+    [[gnu::unused]] auto configuration = Configuration();
 
-    auto controller = Controller();
+    [[gnu::unused]] auto controller = Controller();
 
     return 0;
 }
