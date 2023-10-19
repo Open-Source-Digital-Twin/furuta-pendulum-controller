@@ -5,11 +5,11 @@
 #include <iostream>
 #include <memory>
 
-int main(int, char**)
+int main(int /*unused*/, char** /*unused*/)
 {
-    auto dc_motor = std::make_unique<Hal::DCMotor>(0.0);
+    auto dc_motor = std::make_unique<hal::DCMotor>(0.0);
 
-    [[gnu::unused]] auto angle_sensor = Hal::AngleSensor(0.0);
+    [[gnu::unused]] auto angle_sensor = hal::AngleSensor(0.0);
 
     [[gnu::unused]] auto configuration = Configuration();
 
