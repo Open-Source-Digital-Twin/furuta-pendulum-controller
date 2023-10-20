@@ -11,7 +11,7 @@ int main(int /*unused*/, char** /*unused*/)
 
     [[gnu::unused]] auto angle_sensor = hal::AngleSensor(0.0);
 
-    [[gnu::unused]] auto configuration = Configuration();
+    // [[gnu::unused]] auto configuration = config::Configuration();
 
     [[gnu::unused]] auto controller = Controller();
 
