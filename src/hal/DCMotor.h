@@ -3,7 +3,7 @@
 
 #include "ActuatorInterface.h"
 
-namespace Hal {
+namespace hal {
 
 class DCMotor : public ActuatorInterface<double> {
 public:
@@ -14,6 +14,6 @@ private:
     double motorState_;
 };
 
-}
+} // namespace hal
 
 #endif // DC_MOTOR_H

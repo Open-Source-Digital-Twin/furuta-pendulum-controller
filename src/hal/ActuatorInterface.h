@@ -12,7 +12,7 @@
 #ifndef ACTUATOR_H
 #define ACTUATOR_H
 
-namespace Hal {
+namespace hal {
 
 template <typename ActuatorInputType>
 class ActuatorInterface {
@@ -23,6 +23,7 @@ public:
      * @param state Value to set the actuator's state with
      */
     virtual void SetState(ActuatorInputType state) = 0;
+    virtual ~ActuatorInterface() = default;
 };
-}
+} // namespace hal
 #endif // ACTUATOR_H

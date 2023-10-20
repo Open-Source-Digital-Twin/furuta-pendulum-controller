@@ -11,7 +11,7 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
-namespace Hal {
+namespace hal {
 
 template <typename SensorReturnType, typename SensorInputType>
 class SensorInterface {
@@ -24,5 +24,5 @@ public:
     virtual SensorReturnType GetValue(SensorInputType) = 0;
 };
 
-}
+} // namespace hal
 #endif // SENSOR_H
