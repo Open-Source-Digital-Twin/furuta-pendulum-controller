@@ -9,6 +9,7 @@ target_link_libraries(Controller
                     ConfigLib
                     ControllerLib
                     HalLib
+                    nlohmann_json::nlohmann_json
                     )
 
 if(STRICT_BUILD)

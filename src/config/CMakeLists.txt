@@ -11,3 +11,8 @@ target_include_directories(ConfigLib
   PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
     )
+
+# target_link_libraries(ConfigLib
+#     PRIVATE 
+#     nlohmann_json::nlohmann_json
+#     )

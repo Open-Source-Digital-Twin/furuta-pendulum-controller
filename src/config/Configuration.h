@@ -2,6 +2,7 @@
 #define CONFIGURATION_H
 
 #include "ConfigurationInterface.h"
+#include <nlohmann/json.hpp>
 
 class Configuration : public ConfigurationInterface {
 };

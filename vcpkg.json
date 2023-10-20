@@ -1,6 +1,7 @@
 {
   "dependencies": [
     "protobuf",
-    "gtest"
+    "gtest",
+    "nlohmann-json"
   ]
 }
