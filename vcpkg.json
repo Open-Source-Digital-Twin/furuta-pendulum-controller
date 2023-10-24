@@ -1,6 +1,8 @@
 {
   "dependencies": [
     "protobuf",
-    "gtest"
+    "gtest",
+    "spdlog",
+    "abseil"
   ]
 }
