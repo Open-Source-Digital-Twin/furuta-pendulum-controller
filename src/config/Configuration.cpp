@@ -2,10 +2,14 @@
 
 namespace config {
 
-Configuration::Configuration(std::string& filepath)
-    : filepath_(std::move(filepath)) {}
+Configuration::Configuration(std::filesystem::path filepath)
+    : filepath_(std::move(filepath))
+{
+}
 
-json Configuration::ReadConfigurationFile(){}
+json Configuration::ReadConfigurationFile() { }
 
-int Configuration::WriteConfigurationFile(json jsonfile){}
+int Configuration::GetConfiguration(ConfigurationNameEnum ConfigName) { return 0; };
+
+bool Configuration::WriteConfigurationFile(json jsonfile) { return true;}
 }

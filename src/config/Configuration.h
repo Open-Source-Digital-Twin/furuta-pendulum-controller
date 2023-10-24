@@ -2,19 +2,22 @@
 #define CONFIGURATION_H
 
 #include "ConfigurationInterface.h"
-#include <string>
+#include <filesystem>
 #include <nlohmann/json.hpp>
+#include <string>
 using json = nlohmann::json;
 
 namespace config {
 class Configuration : public ConfigurationInterface<json> {
 public:
-    explicit Configuration(std::string& filepath);
-    json ReadConfigurationFile() override;
-    int WriteConfigurationFile(json jsonfile) override;
+    explicit Configuration(std::filesystem::path filepath);
+    [[nodiscard]] json ReadConfigurationFile() override;
+    [[nodiscard]] int GetConfiguration(ConfigurationNameEnum ConfigName) override;
+    [[nodiscard]] bool WriteConfigurationFile(json jsonfile) override;
+
 private:
-    std::string filepath_;
+    std::filesystem::path filepath_;
 };
-}
+} // namespace config
 
 #endif // CONFIGURATION_H
