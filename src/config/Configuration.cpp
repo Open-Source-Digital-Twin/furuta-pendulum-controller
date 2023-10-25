@@ -1,19 +1,3 @@
-// #include "Configuration.h"
-
-// namespace config {
-
-// Configuration::Configuration(std::filesystem::path filepath)
-//     : filepath_(std::move(filepath))
-// {
-// }
-
-// json Configuration::ReadConfigurationFile() { }
-
-// int Configuration::GetConfiguration(ConfigurationNameEnum ConfigName) { return 0; };
-
-// bool Configuration::WriteConfigurationFile(json jsonfile) { return true;}
-// }
-
 #include "Configuration.h"
 #include <cstdio>
 #include <fstream>
@@ -40,7 +24,6 @@ json Configuration::ReadConfigurationFile()
 int Configuration::GetConfiguration(ConfigurationNameEnum ConfigName)
 {
     json configurationData = ReadConfigurationFile();
-    // Implement your logic to get the specific configuration value
     return configurationData[ConfigName];
 }
 
@@ -54,7 +37,6 @@ bool Configuration::WriteConfigurationFile(json jsonfile)
 
 void Configuration::CreateDefaultConfigurationFile(ConfigurationNameEnum ConfigName)
 {
-    // Create a default configuration
     json defaultConfig;
     switch (ConfigName) {
         case kAngleSensorConfiguration:
