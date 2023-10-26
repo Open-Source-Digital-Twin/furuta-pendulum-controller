@@ -9,6 +9,8 @@ target_link_libraries(Controller
                     ConfigLib
                     ControllerLib
                     HalLib
+                    spdlog::spdlog
+                    absl::strings
                     )
 
 if(STRICT_BUILD)
