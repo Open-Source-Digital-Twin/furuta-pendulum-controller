@@ -11,7 +11,7 @@ class Configuration : public ConfigurationInterface<json> {
 public:
     explicit Configuration(std::filesystem::path filepath);
     [[nodiscard]] bool LoadConfigurationFile() override;
-    [[nodiscard]] bool WriteConfigurationFile(json jsonfile) override;
+    [[nodiscard]] bool WriteConfigurationFile(json& jsonfile) override;
     [[nodiscard]] json GetConfiguration(std::string& configName) override;
     [[nodiscard]] bool CreateDefaultConfigurationFile();
 private:

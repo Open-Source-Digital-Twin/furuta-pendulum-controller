@@ -1,26 +1,26 @@
 #include "Configuration.h"
 #include <cstdio>
 #include <fstream>
+#include <iostream>
 
 namespace config {
 
 Configuration::Configuration(std::filesystem::path filepath)
     : filepath_(std::move(filepath))
 {
-    std::filesystem::path configFilePath = filepath_ / "config.json";
 
-    if (!std::filesystem::exists(configFilePath)) {
+    if (!std::filesystem::exists(filepath_)) {
         bool creation_success = CreateDefaultConfigurationFile();
         if (!creation_success){
             // This is temporary. I suppose we can use spdlog to log the failures
-            printf("Failed to create config file");
+            std::cout << "Failed to create config file" << std::endl;
         }
 
     } else {
         // Same as above
         bool load_success = LoadConfigurationFile();
         if (!load_success){
-            printf("Failed to load config file");
+            std::cout << "Failed to load config file" << std::endl;
         }
     }
 }
@@ -31,11 +31,29 @@ bool Configuration::LoadConfigurationFile() {
     return configFile.good();
 }
 
-bool Configuration::WriteConfigurationFile(json jsonfile) {
+// bool Configuration::WriteConfigurationFile(json jsonfile) {
+//     std::ofstream configFile(filepath_);
+//     configFile << std::setw(4) << jsonfile << std::endl;
+//     return configFile.good();
+// }
+bool Configuration::WriteConfigurationFile(json& jsonfile) {
+    // if (jsonfile.empty()) {
+    //     // Another spdlog maybe?
+    //     return false;
+    // }
+
+    // // Open the file for writing
     std::ofstream configFile(filepath_);
+    // if (!configFile.is_open()) {
+    //     return false;
+    // }
+
     configFile << std::setw(4) << jsonfile << std::endl;
+
     return configFile.good();
+   
 }
+
 
 json Configuration::GetConfiguration(std::string& configName) {
     // Assuming the configuration data is already loaded
@@ -58,25 +76,27 @@ json Configuration::GetConfiguration(std::string& configName) {
 
 
 bool Configuration::CreateDefaultConfigurationFile() {
-    // Create a default configuration JSON with elements for both kAngleSensorConfiguration and kDcMotorConfiguration
+    // Create JSON objects for each configuration
+    json angleSensorConfig = {
+        {"Name", "Angle Sensor"},
+        {"MaxValue", 360},
+        {"MinValue", 0},
+        {"DefaultValue", 0},
+        {"Description", "abc"}
+    };
+
+    json dcMotorConfig = {
+        {"Name", "DC Motor"},
+        {"MaxValue", 100},
+        {"MinValue", 0},
+        {"DefaultValue", 0},
+        {"Description", "def"}
+    };
+
+    // Create a JSON object that contains these configuration objects
     json defaultConfig;
-
-    json angleSensorConfig;
-    angleSensorConfig["Name"] = "Angle Sensor";
-    angleSensorConfig["MaxValue"] = 0;
-    angleSensorConfig["MinValue"] = 360;
-    angleSensorConfig["DefaultValue"] = 0;
-    angleSensorConfig["Description"] = "Measures and converts mechanical rotation into a scaled electrical signal";
-
-    json dcMotorConfig;
-    dcMotorConfig["Name"] = "DC Motor";
-    dcMotorConfig["MaxValue"] = 100;
-    dcMotorConfig["MinValue"] = 0;
-    dcMotorConfig["DefaultValue"] = 0;
-    dcMotorConfig["Description"] = "Direct current motor";
-
-    defaultConfig[kAngleSensorConfiguration] = angleSensorConfig;
-    defaultConfig[kDcMotorConfiguration] = dcMotorConfig;
+    defaultConfig["angleSensorConfig"] = angleSensorConfig;
+    defaultConfig["dcMotorConfig"] = dcMotorConfig;
 
     bool writeSuccess = WriteConfigurationFile(defaultConfig);
 

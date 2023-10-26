@@ -21,7 +21,7 @@ public:
      * @return true when writing successfully
      * @return false when failing to write
      */
-    virtual bool WriteConfigurationFile(ConfigurationFileType jsonfile) = 0;
+    virtual bool WriteConfigurationFile(ConfigurationFileType& jsonfile) = 0;
     /**
      * @brief Get a specific configuration from the private member variable
      * 
