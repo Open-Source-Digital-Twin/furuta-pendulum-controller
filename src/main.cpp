@@ -22,30 +22,17 @@ int main(int /*unused*/, char** /*unused*/)
     [[gnu::unused]] auto controller = Controller();
 
 
-    config::Configuration config("/usr/local/config/InvertedPendulum/config.json");
+    config::Configuration config("/workspaces/HAL-controller-test/config.json");
+    std::string targetConfigName = "angleSensorConfig"; 
+    json targetConfig = config.GetConfiguration(targetConfigName);
 
-    // // Load the existing configuration data from the JSON file
-    // bool loadSuccess = config.LoadConfigurationFile();
-
-    // if (loadSuccess) {
-    //     std::string targetConfigName = "Angle Sensor"; 
-    //     json targetConfig = config.GetConfiguration(targetConfigName);
-
-    //     if (!targetConfig.empty()) {
-    //         // Print the configuration element
-    //         std::cout << "Configuration Name: " << targetConfig["Name"] << std::endl;
-    //         std::cout << "MaxValue: " << targetConfig["MaxValue"] << std::endl;
-    //         std::cout << "MinValue: " << targetConfig["MinValue"] << std::endl;
-    //         std::cout << "DefaultValue: " << targetConfig["DefaultValue"] << std::endl;
-    //         std::cout << "Description: " << targetConfig["Description"] << std::endl;
-    //     }
-    //     else {
-    //         std::cout << "Configuration not found." << std::endl;
-    //     }
-    // }
-    // else {
-    //     std::cout << "Failed to load the configuration file." << std::endl;
-    // }
+    if (!targetConfig.empty()) {
+        std::cout << "Configuration Name: " << targetConfig["Name"] << std::endl;
+        std::cout << "MaxValue: " << targetConfig["MaxValue"] << std::endl;
+        std::cout << "MinValue: " << targetConfig["MinValue"] << std::endl;
+        std::cout << "DefaultValue: " << targetConfig["DefaultValue"] << std::endl;
+        std::cout << "Description: " << targetConfig["Description"] << std::endl;
+    }
 
     return 0;
 }
