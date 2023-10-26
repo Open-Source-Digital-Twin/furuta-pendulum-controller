@@ -21,9 +21,8 @@ int main(int /*unused*/, char** /*unused*/)
     [[gnu::unused]] auto angle_sensor = hal::AngleSensor(0.0);
     [[gnu::unused]] auto controller = Controller();
 
-
     config::Configuration config("/workspaces/HAL-controller-test/config.json");
-    std::string targetConfigName = "angleSensorConfig"; 
+    std::string targetConfigName = "angleSensorConfig2";
     json targetConfig = config.GetConfiguration(targetConfigName);
 
     if (!targetConfig.empty()) {

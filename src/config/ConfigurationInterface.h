@@ -16,17 +16,17 @@ public:
     virtual bool LoadConfigurationFile() = 0;
     /**
      * @brief Writes configuration data to file
-     * 
-     * @param jsonfile 
+     *
+     * @param jsonfile
      * @return true when writing successfully
      * @return false when failing to write
      */
     virtual bool WriteConfigurationFile(ConfigurationFileType& jsonfile) = 0;
     /**
      * @brief Get a specific configuration from the private member variable
-     * 
-     * @param ConfigName 
-     * @return ConfigurationFileType 
+     *
+     * @param ConfigName
+     * @return ConfigurationFileType
      */
     virtual ConfigurationFileType GetConfiguration(std::string& configName) = 0;
     virtual ~ConfigurationInterface() = default;

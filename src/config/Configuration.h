@@ -14,10 +14,10 @@ public:
     [[nodiscard]] bool WriteConfigurationFile(json& jsonfile) override;
     [[nodiscard]] json GetConfiguration(std::string& configName) override;
     [[nodiscard]] bool CreateDefaultConfigurationFile();
+
 private:
     std::filesystem::path filepath_;
     json configData_;
-    
 };
 } // namespace config
 

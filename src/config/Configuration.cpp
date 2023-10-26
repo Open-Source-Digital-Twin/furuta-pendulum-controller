@@ -63,12 +63,16 @@ json Configuration::GetConfiguration(std::string& configName)
     if (configData_.contains(configName)) {
         return configData_[configName];
     }
+
+    std::cout << "Configuration not found. The available configuration names are:" << std::endl;
+    for (const auto& [key, value] : configData_.items()) {
+        std::cout << key << std::endl;
+    }
     return {};
 }
 
 bool Configuration::CreateDefaultConfigurationFile()
 {
-    // Create JSON objects for each configuration
     json angleSensorConfig = {
         { "Name", "Angle Sensor" },
         { "MaxValue", 360 },
@@ -85,7 +89,6 @@ bool Configuration::CreateDefaultConfigurationFile()
         { "Description", "Direct current motor" }
     };
 
-    // Create a JSON object that contains these configuration objects
     json defaultConfig;
     defaultConfig["angleSensorConfig"] = angleSensorConfig;
     defaultConfig["dcMotorConfig"] = dcMotorConfig;
