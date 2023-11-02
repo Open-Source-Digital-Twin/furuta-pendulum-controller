@@ -5,6 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(Protobuf REQUIRED)
 find_package(GTest REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
+find_package(absl CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
 
 option(STRICT_BUILD "Enable warnings as errors" ON)
 
