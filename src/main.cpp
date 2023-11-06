@@ -1,5 +1,6 @@
 #include "AngleSensor.h"
 #include "Configuration.h"
+#include "ConfigurationName.h"
 #include "Controller.h"
 #include "DCMotor.h"
 #include "absl/strings/str_join.h"
@@ -21,17 +22,15 @@ int main(int /*unused*/, char** /*unused*/)
     [[gnu::unused]] auto angle_sensor = hal::AngleSensor(0.0);
     [[gnu::unused]] auto controller = Controller();
 
-    config::Configuration config("/workspaces/HAL-controller-test/config.json");
-    std::string targetConfigName = "angleSensorConfig2";
-    json targetConfig = config.GetConfiguration(targetConfigName);
+    config::Configuration config("/workspaces/inverted-pendulum-controller/config.json");
+    auto target_config = config.GetSetting(config::ConfigurationName::kAngleSensorMaxValue).Value<float>();
+    spdlog::critical("Getting config: {}", target_config);
 
-    if (!targetConfig.empty()) {
-        std::cout << "Configuration Name: " << targetConfig["Name"] << std::endl;
-        std::cout << "MaxValue: " << targetConfig["MaxValue"] << std::endl;
-        std::cout << "MinValue: " << targetConfig["MinValue"] << std::endl;
-        std::cout << "DefaultValue: " << targetConfig["DefaultValue"] << std::endl;
-        std::cout << "Description: " << targetConfig["Description"] << std::endl;
-    }
+    // If we try to get value as int, it'll throw an exception
+    // auto int_config = config.GetSetting(config::ConfigurationName::kAngleSensorMaxValue).Value<int>();
+
+    // If we try to get value of a non existing config, it'll show all available configs and throw an exception
+    // [[gnu::unused]] auto motor_config = config.GetSetting(config::ConfigurationName::kDcMotorSpeed).Value<float>();
 
     return 0;
 }

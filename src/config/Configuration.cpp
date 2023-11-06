@@ -1,4 +1,5 @@
 #include "Configuration.h"
+#include "ConfigurationDefault.h"
 #include <cstdio>
 #include <fstream>
 #include <iostream>
@@ -28,9 +29,9 @@ Configuration::Configuration(std::filesystem::path filepath)
 
 bool Configuration::LoadConfigurationFile()
 {
-    std::ifstream configFile(filepath_);
-    configFile >> configData_;
-    return configFile.good();
+    std::ifstream config_file(filepath_);
+    config_file >> configData_;
+    return config_file.good();
 }
 
 bool Configuration::WriteConfigurationFile(json& jsonfile)
@@ -40,62 +41,61 @@ bool Configuration::WriteConfigurationFile(json& jsonfile)
         return false;
     }
 
-    std::ofstream configFile;
-    configFile.open(filepath_);
+    std::ofstream config_file;
+    config_file.open(filepath_);
 
-    if (!configFile.is_open()) {
+    if (!config_file.is_open()) {
         int errnum = errno;
         std::cerr << "Failed to open file: " << strerror(errnum) << std::endl;
     }
     try {
-        configFile << std::setw(4) << jsonfile << std::endl;
+        config_file << std::setw(4) << jsonfile << std::endl;
     }
     catch (const std::exception& e) {
         std::cerr << "Error writing JSON to file: " << e.what() << std::endl;
         return false;
     }
 
-    return configFile.good();
+    return config_file.good();
 }
 
-json Configuration::GetConfiguration(std::string& configName)
+Setting Configuration::GetSetting(ConfigurationName config_name)
 {
-    if (configData_.contains(configName)) {
-        return configData_[configName];
+    // TODO(caiopiccirillo): Implement getting a setting from the config file
+    // if (!configData_.empty()) {
+    //  return configData_.at(ToString(config_name));
+    // }
+
+    auto has_name = [config_name](const Setting& setting) { return setting.name == config_name; };
+    if (auto iter = std::find_if(kDefaultConfig.begin(), kDefaultConfig.end(), has_name); iter != std::end(kDefaultConfig)) {
+        return *iter;
     }
 
     std::cout << "Configuration not found. The available configuration names are:" << std::endl;
     for (const auto& [key, value] : configData_.items()) {
         std::cout << key << std::endl;
     }
-    return {};
+
+    std::string error = "Configuration not found: " + ToString(config_name);
+    throw std::runtime_error(error);
 }
 
 bool Configuration::CreateDefaultConfigurationFile()
 {
-    json angleSensorConfig = {
-        { "Name", "Angle Sensor" },
-        { "MaxValue", 360 },
-        { "MinValue", 0 },
-        { "DefaultValue", 0 },
-        { "Description", "Measures and converts mechanical rotation into a scaled electrical signal" }
-    };
+    json default_config;
 
-    json dcMotorConfig = {
-        { "Name", "DC Motor" },
-        { "MaxValue", 100 },
-        { "MinValue", 0 },
-        { "DefaultValue", 0 },
-        { "Description", "Direct current motor" }
-    };
+    for (const auto& setting : kDefaultConfig) {
+        default_config[ToString(setting.name)]["Name"] = ToString(setting.name);
+        default_config[ToString(setting.name)]["MaxValue"] = setting.max_value;
+        default_config[ToString(setting.name)]["MinValue"] = setting.min_value;
+        default_config[ToString(setting.name)]["DefaultValue"] = setting.Value<float>(); // TODO(caiopiccirillo): This is a bit hacky, add support for other types
+        default_config[ToString(setting.name)]["Unit"] = setting.unit;
+        default_config[ToString(setting.name)]["Description"] = setting.description;
+    }
 
-    json defaultConfig;
-    defaultConfig["angleSensorConfig"] = angleSensorConfig;
-    defaultConfig["dcMotorConfig"] = dcMotorConfig;
+    bool write_success = WriteConfigurationFile(default_config);
 
-    bool writeSuccess = WriteConfigurationFile(defaultConfig);
-
-    return writeSuccess;
+    return write_success;
 }
 
 } // namespace config
