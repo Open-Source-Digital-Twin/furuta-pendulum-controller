@@ -15,6 +15,14 @@ enum class ConfigurationName {
     kDcMotorSpeed
 };
 
+/**
+ * @brief Converts the given ConfigurationName into the equivalent name
+ * 
+ * @param config_name 
+ * @return std::string name of the configuration
+ *
+ * @remark 	Foo logging purposes but also to overload the << operator so that GTest can print the errors correctly
+ */
 inline std::string ToString(ConfigurationName config_name)
 {
     switch (config_name) {

@@ -24,8 +24,20 @@ private:
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 
+/**
+ * @brief Serializer. Uses Argument-dependent lookup to choose to_json/from_json functions from the types' namespaces.
+Overloaded to work with std::optional
+ *
+ * @tparam T
+ */
 template <typename T>
 struct adl_serializer<std::optional<T>> {
+    /**
+     * @brief Converts a JSON value to any value type
+     *
+     * @param j
+     * @param opt
+     */
     static void from_json(const json& j, std::optional<T>& opt)
     {
         if (j.is_null()) {
@@ -35,6 +47,12 @@ struct adl_serializer<std::optional<T>> {
             opt = j.get<T>();
         }
     }
+    /**
+     * @brief Converts any value type to a JSON value
+     *
+     * @param json
+     * @param t
+     */
     static void to_json(json& json, std::optional<T> t)
     {
         if (t) {
@@ -46,6 +64,14 @@ struct adl_serializer<std::optional<T>> {
     }
 };
 
+/**
+ * @brief 
+ * 
+ * @tparam T 
+ * @tparam Ts 
+ * @param j 
+ * @param data 
+ */
 template <typename T, typename... Ts>
 void variant_from_json(const nlohmann::json& j, std::variant<Ts...>& data)
 {
@@ -56,13 +82,30 @@ void variant_from_json(const nlohmann::json& j, std::variant<Ts...>& data)
     }
 }
 
+/**
+ * @brief Serializer. Uses Argument-dependent lookup to choose to_json/from_json functions from the types' namespaces.
+Overloaded to work with std::variant
+ *
+ * @tparam Ts
+ */
 template <typename... Ts>
 struct adl_serializer<std::variant<Ts...>> {
+    /**
+     * @brief Converts any value type to a JSON value
+     *
+     * @param json
+     * @param t
+     */
     static void to_json(nlohmann::json& j, const std::variant<Ts...>& data)
     {
         std::visit([&j](const auto& v) { j = v; }, data);
     }
-
+    /**
+     * @brief Converts a JSON value to any value type
+     *
+     * @param j
+     * @param opt
+     */
     static void from_json(const nlohmann::json& j, std::variant<Ts...>& data)
     {
         (variant_from_json<Ts>(j, data), ...);

@@ -9,6 +9,12 @@ namespace config {
 
 using SettingValueType = std::variant<int, float>;
 
+/**
+ * @brief Struct representing the configuration data.  
+ * @remark Indipendent from the configuration file. Future development includes a configuration class that 
+ parses the configuration file during compile time. Having a fixed size will be beneficial 
+ when flashing resource-limited microcontrollers
+ */
 struct Setting {
     ConfigurationName name;
     SettingValueType value;
@@ -18,14 +24,18 @@ struct Setting {
     std::optional<std::string> description;
 
 public:
+    /**
+     * @brief Check if the variant holds a value of type T. 
+     * 
+     * @tparam 
+     * @return The value of type T if it holds. If not, throw an exception
+     */
     template <typename T>
     T Value() const
     {
-        // Check if the variant holds a value of type T
         if (std::holds_alternative<T>(this->value)) {
             return std::get<T>(this->value);
         }
-        // If not, throw an exception
         throw std::bad_variant_access();
     }
 };
