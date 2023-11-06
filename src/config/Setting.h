@@ -11,7 +11,7 @@ using SettingValueType = std::variant<int, float>;
 
 /**
  * @brief Struct representing the configuration data.  
- * @remark Indipendent from the configuration file. Future development includes a configuration class that 
+ * @remark Independent from the configuration file. Future development includes a configuration class that 
  parses the configuration file during compile time. Having a fixed size will be beneficial 
  when flashing resource-limited microcontrollers
  */

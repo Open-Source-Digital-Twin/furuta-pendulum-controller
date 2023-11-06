@@ -65,12 +65,12 @@ struct adl_serializer<std::optional<T>> {
 };
 
 /**
- * @brief 
- * 
- * @tparam T 
- * @tparam Ts 
- * @param j 
- * @param data 
+ * @brief
+ *
+ * @tparam T
+ * @tparam Ts
+ * @param j
+ * @param data
  */
 template <typename T, typename... Ts>
 void variant_from_json(const nlohmann::json& j, std::variant<Ts...>& data)
