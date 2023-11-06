@@ -1,6 +1,7 @@
 #ifndef CONFIGURATION_INTERFACE_H
 #define CONFIGURATION_INTERFACE_H
-#include "ConfigurationNameEnum.h"
+#include "ConfigurationName.h"
+#include "Setting.h"
 #include <string>
 
 namespace config {
@@ -28,9 +29,10 @@ public:
      * @param ConfigName
      * @return ConfigurationFileType
      */
-    virtual ConfigurationFileType GetConfiguration(std::string& configName) = 0;
+    virtual Setting GetSetting(ConfigurationName config_name) = 0;
     virtual ~ConfigurationInterface() = default;
 };
+
 } // namespace config
 
 #endif // CONFIGURATION_INTERFACE_H
