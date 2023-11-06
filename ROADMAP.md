@@ -4,7 +4,7 @@
 
 - [ ] Create a basic controller that supports PID control.
 - [ ] Implement a configuration system so that the controller parameters can be adjusted.
-- [ ] Add support for switching controllers at compile time.
+- [ ] Adding profiling/benchmarking/sanitizers.
 - [ ] Implement protobuf messages for communicating with the game engine.
 - [ ] Implement a client-server architecture for communication between the controller and the game engine over a local port.
 
@@ -12,6 +12,7 @@
 
 - [ ] Add crosscompilation support for Raspberry Pi.
 - [ ] Add support for additional control strategies.
+- [ ] Add support for switching controllers at compile time.
 - [ ] Implement additional protobuf messages for communicating with the game engine.
 - [ ] Add support for more complex interactions between the controller and the game engine.
 
