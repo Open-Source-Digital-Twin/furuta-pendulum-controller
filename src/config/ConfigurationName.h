@@ -12,7 +12,10 @@ enum class ConfigurationName {
     kDcMotorMaxVoltage,
     kDcMotorMinVoltage,
     kDcMotorTorque,
-    kDcMotorSpeed
+    kDcMotorSpeed,
+    kControllerProportionalGain,
+    kControllerIntegrativeGain,
+    kControllerDerivativeGain,
 };
 
 /**
@@ -42,6 +45,15 @@ inline std::string ToString(ConfigurationName config_name)
         return "kDcMotorTorque";
     case ConfigurationName::kDcMotorSpeed:
         return "kDcMotorSpeed";
+    case ConfigurationName::kControllerProportionalGain:
+        return "kControllerProportionalGain";
+    case ConfigurationName::kControllerIntegrativeGain:
+        return "kControllerIntegrativeGain";
+    case ConfigurationName::kControllerDerivativeGain:
+        return "kControllerDerivativeGain";
+        
+    return{};
+        break;
     } // Don't add the default case, so that the compiler can warn you.
 }
 
