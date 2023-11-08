@@ -1,9 +1,9 @@
 #ifndef CONTROLLER_INTERFACE_H
 #define CONTROLLER_INTERFACE_H
 
-namespace controller{
+namespace controller {
 
-template<typename LogicalInput, typename LogicalOutput>
+template <typename LogicalInput, typename LogicalOutput>
 class ControllerInterface {
 public:
     virtual ~ControllerInterface() = default;

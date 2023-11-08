@@ -51,8 +51,8 @@ inline std::string ToString(ConfigurationName config_name)
         return "kControllerIntegrativeGain";
     case ConfigurationName::kControllerDerivativeGain:
         return "kControllerDerivativeGain";
-        
-    return{};
+
+        return {};
         break;
     } // Don't add the default case, so that the compiler can warn you.
 }

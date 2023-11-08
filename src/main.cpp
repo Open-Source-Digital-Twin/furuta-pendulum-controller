@@ -12,8 +12,8 @@
 
 using namespace std::chrono_literals;
 
-namespace{
-    const auto kCycleTime = 1000ms;
+namespace {
+const auto kCycleTime = 1000ms;
 }
 
 int main(int /*unused*/, char** /*unused*/)
@@ -40,8 +40,7 @@ int main(int /*unused*/, char** /*unused*/)
 
     auto pid_controller = controller::Controller(config, kCycleTime);
 
-    while(true)
-    {
+    while (true) {
         std::this_thread::sleep_for(kCycleTime);
         pid_controller.Read(1.);
         spdlog::info("Getting controller output: {}", pid_controller.Write());
