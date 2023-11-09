@@ -7,7 +7,7 @@
 
 namespace config {
 
-using SettingValueType = std::variant<int, float>;
+using SettingValueType = std::variant<int, float, double>;
 
 /**
  * @brief Struct representing the configuration data.

@@ -88,7 +88,7 @@ bool Configuration::CreateDefaultConfigurationFile()
         default_config[ToString(setting.name)]["Name"] = ToString(setting.name);
         default_config[ToString(setting.name)]["MaxValue"] = setting.max_value;
         default_config[ToString(setting.name)]["MinValue"] = setting.min_value;
-        default_config[ToString(setting.name)]["DefaultValue"] = setting.Value<float>(); // TODO(caiopiccirillo): This is a bit hacky, add support for other types
+        default_config[ToString(setting.name)]["DefaultValue"] = setting.Value<double>(); // TODO(caiopiccirillo): This is a bit hacky, add support for other types
         default_config[ToString(setting.name)]["Unit"] = setting.unit;
         default_config[ToString(setting.name)]["Description"] = setting.description;
     }
