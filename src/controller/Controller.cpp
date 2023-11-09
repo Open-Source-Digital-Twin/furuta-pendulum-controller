@@ -3,19 +3,6 @@
 
 namespace controller {
 
-// template <typename ConfigFileType>
-// Controller::Controller(config::ConfigurationInterface<ConfigFileType>& config, std::chrono::microseconds dt)
-//     : kp_(config.GetSetting(config::ConfigurationName::kControllerProportionalGain).template Value<double>())
-//     , ki_(config.GetSetting(config::ConfigurationName::kControllerIntegrativeGain).template Value<double>())
-//     , kd_(config.GetSetting(config::ConfigurationName::kControllerDerivativeGain).template Value<double>())
-//     , error_(0.0)
-//     , previous_error_(0.0)
-//     , integral_part_(0.0)
-//     , output_(0.0)
-//     , dt_(dt)
-// {
-// }
-
 void Controller::Read(double error)
 {
     this->error_ = error;
