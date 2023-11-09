@@ -24,7 +24,7 @@ enum class ConfigurationName {
  * @param config_name
  * @return std::string name of the configuration
  *
- * @remark 	Foo logging purposes but also to overload the << operator so that GTest can print the errors correctly
+ * @remark 	For logging purposes but also to overload the << operator so that GTest can print the errors correctly
  */
 inline std::string ToString(ConfigurationName config_name)
 {
@@ -51,9 +51,6 @@ inline std::string ToString(ConfigurationName config_name)
         return "kControllerIntegrativeGain";
     case ConfigurationName::kControllerDerivativeGain:
         return "kControllerDerivativeGain";
-
-        return {};
-        break;
     } // Don't add the default case, so that the compiler can warn you.
 }
 

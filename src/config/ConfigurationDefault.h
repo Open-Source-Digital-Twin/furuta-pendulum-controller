@@ -9,13 +9,13 @@ namespace config {
 
 const std::vector<Setting> kDefaultConfig = {
     { ConfigurationName::kAngleSensorMaxValue,
-        M_PIf,
+        M_PI,
         std::nullopt,
         std::nullopt,
         "rad",
         "Maximum value of sensor's range" },
     { ConfigurationName::kAngleSensorMinValue,
-        -M_PIf,
+        -M_PI,
         std::nullopt,
         std::nullopt,
         "rad",
