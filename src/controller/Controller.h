@@ -27,10 +27,10 @@ private:
     double kp_;
     double ki_;
     double kd_;
-    double integral_part_{};
-    double output_{};
-    double error_{};
-    double previous_error_{};
+    double integral_part_ {};
+    double output_ {};
+    double error_ {};
+    double previous_error_ {};
     std::chrono::microseconds dt_;
 };
 
