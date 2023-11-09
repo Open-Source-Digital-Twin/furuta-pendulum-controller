@@ -18,6 +18,7 @@ int main(int /*unused*/, char** /*unused*/)
 
     spdlog::warn("Checking if abseil is working: {}", s);
 
+    spdlog::info("Instantiating motor, sensor and controller.");
     auto dc_motor = std::make_unique<hal::DCMotor>(0.0);
     [[gnu::unused]] auto angle_sensor = hal::AngleSensor(0.0);
     [[gnu::unused]] auto controller = Controller();

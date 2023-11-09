@@ -8,11 +8,12 @@ find_package(GTest REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(absl CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
+find_package(benchmark CONFIG REQUIRED)
 
 option(STRICT_BUILD "Enable warnings as errors" ON)
 
 add_subdirectory(src)
-
+add_subdirectory(benchmark)
 add_subdirectory(test)
 include(CTest)
 

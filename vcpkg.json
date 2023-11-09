@@ -4,6 +4,7 @@
     "gtest",
     "spdlog",
     "abseil",
-    "nlohmann-json"
+    "nlohmann-json",
+    "benchmark"
   ]
 }
