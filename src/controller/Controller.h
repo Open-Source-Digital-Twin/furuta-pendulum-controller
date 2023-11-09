@@ -5,11 +5,13 @@
 #include "ConfigurationInterface.h"
 #include "ControllerInterface.h"
 #include <chrono>
+
 namespace controller {
 
 class Controller : ControllerInterface<double, double> {
 public:
-    explicit Controller(config::ConfigurationInterface<json>& config, std::chrono::microseconds dt);
+    template <typename ConfigFileType>
+    explicit Controller(config::ConfigurationInterface<ConfigFileType>& config, std::chrono::microseconds dt);
     ~Controller() override = default;
     void Read(double error) override;
     [[nodiscard]] double Write() override;
