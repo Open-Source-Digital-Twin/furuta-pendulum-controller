@@ -8,15 +8,16 @@
 using json = nlohmann::json;
 
 namespace config {
-class Configuration : public ConfigurationInterface<json> {
+class Configuration : public ConfigurationInterface {
 public:
     explicit Configuration(std::filesystem::path filepath);
-    [[nodiscard]] bool LoadConfigurationFile() override;
-    [[nodiscard]] bool WriteConfigurationFile(json& jsonfile) override;
     [[nodiscard]] Setting GetSetting(ConfigurationName config_name) override;
-    [[nodiscard]] bool CreateDefaultConfigurationFile();
 
 private:
+    [[nodiscard]] bool LoadConfigurationFile();
+    [[nodiscard]] bool WriteConfigurationFile(json& jsonfile);
+    [[nodiscard]] bool CreateDefaultConfigurationFile();
+
     std::filesystem::path filepath_;
     json configData_;
 };

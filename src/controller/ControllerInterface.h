@@ -11,6 +11,6 @@ public:
     [[nodiscard]] virtual LogicalOutput Write() = 0;
 };
 
-}
+} // namespace controller
 
 #endif

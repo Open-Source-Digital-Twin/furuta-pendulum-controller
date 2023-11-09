@@ -1,5 +1,7 @@
 enable_testing()
 
+include_directories(mocks)
+
 add_subdirectory(config)
 add_subdirectory(controller)
 add_subdirectory(hal)

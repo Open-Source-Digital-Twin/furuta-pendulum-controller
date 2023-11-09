@@ -5,32 +5,16 @@
 #include <string>
 
 namespace config {
-template <typename ConfigurationFileType>
 class ConfigurationInterface {
 public:
+    virtual ~ConfigurationInterface() = default;
     /**
-     * @brief Loads the content of the configuration file into a private member variable
+     * @brief Get the setting according to configuration name
      *
-     * @return true when loading successfully
-     * @return false when failing to load
-     */
-    virtual bool LoadConfigurationFile() = 0;
-    /**
-     * @brief Writes configuration data to file
-     *
-     * @param jsonfile
-     * @return true when writing successfully
-     * @return false when failing to write
-     */
-    virtual bool WriteConfigurationFile(ConfigurationFileType& jsonfile) = 0;
-    /**
-     * @brief Get a specific configuration from the private member variable
-     *
-     * @param ConfigName
-     * @return ConfigurationFileType
+     * @param config_name
+     * @return Setting
      */
     virtual Setting GetSetting(ConfigurationName config_name) = 0;
-    virtual ~ConfigurationInterface() = default;
 };
 
 } // namespace config
