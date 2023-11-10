@@ -30,6 +30,7 @@ int main(int /*unused*/, char** /*unused*/)
     [[gnu::unused]] auto angle_sensor = hal::AngleSensor(0.0);
 
     config::Configuration config("/workspaces/inverted-pendulum-controller/config.json");
+
     // auto target_config = config.GetSetting(config::ConfigurationName::kAngleSensorMaxValue).Value<float>();
     // spdlog::critical("Getting config: {}", target_config);
 
