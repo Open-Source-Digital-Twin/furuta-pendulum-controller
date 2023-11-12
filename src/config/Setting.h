@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SETTING_H
+#define SETTING_H
 
 #include "ConfigurationName.h"
 #include <optional>
@@ -32,25 +33,28 @@ public:
 
     [[nodiscard]] ConfigurationName Name() const { return this->name_; };
 
+    Setting() = default;
+
     /**
      * @brief Check if the variant holds a value of type T.
      *
      * @tparam
      * @return The value of type T if it holds. If not, throw an exception
      */
+    [[nodiscard]] SettingValueType Value() const { return this->value_; }
+    [[nodiscard]] std::optional<SettingValueType> MaxValue() const { return this->max_value_; };
+    [[nodiscard]] std::optional<SettingValueType> MinValue() const { return this->min_value_; };
+    [[nodiscard]] std::optional<std::string> Unit() const { return this->unit_; };
+    [[nodiscard]] std::optional<std::string> Description() const { return this->description_; };
+
     template <typename T>
-    [[nodiscard]] T Value() const
+    [[nodiscard]] T ValueByType() const
     {
         if (std::holds_alternative<T>(this->value_)) {
             return std::get<T>(this->value_);
         }
         throw std::bad_variant_access();
     }
-
-    [[nodiscard]] std::optional<SettingValueType> MaxValue() const { return this->max_value_; };
-    [[nodiscard]] std::optional<SettingValueType> MinValue() const { return this->min_value_; };
-    [[nodiscard]] std::optional<std::string> Unit() const { return this->unit_; };
-    [[nodiscard]] std::optional<std::string> Description() const { return this->description_; };
 
 private:
     ConfigurationName name_;
@@ -62,3 +66,5 @@ private:
 };
 
 } // namespace config
+
+#endif

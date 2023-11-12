@@ -15,4 +15,5 @@ target_include_directories(ConfigLib
 target_link_libraries(ConfigLib
     PUBLIC 
     nlohmann_json::nlohmann_json
+    spdlog::spdlog
     )

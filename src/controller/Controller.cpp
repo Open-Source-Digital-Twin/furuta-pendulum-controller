@@ -4,9 +4,9 @@
 namespace controller {
 
 Controller::Controller(config::ConfigurationInterface& config, std::chrono::milliseconds cycle_time)
-    : kp_(config.GetSetting(config::ConfigurationName::kControllerProportionalGain).Value<double>())
-    , ki_(config.GetSetting(config::ConfigurationName::kControllerIntegrativeGain).Value<double>())
-    , kd_(config.GetSetting(config::ConfigurationName::kControllerDerivativeGain).Value<double>())
+    : kp_(config.GetSetting(config::ConfigurationName::kControllerProportionalGain).ValueByType<double>())
+    , ki_(config.GetSetting(config::ConfigurationName::kControllerIntegrativeGain).ValueByType<double>())
+    , kd_(config.GetSetting(config::ConfigurationName::kControllerDerivativeGain).ValueByType<double>())
     , error_(0.0)
     , integral_part_(0.0)
     , previous_error_(0.0)

@@ -2,26 +2,10 @@
 #define CONFIGURATION_H
 
 #include "ConfigurationInterface.h"
+#include "ConfigurationName.h"
+#include "Setting.h"
 #include <filesystem>
 #include <nlohmann/json.hpp>
-
-using json = nlohmann::json;
-
-namespace config {
-class Configuration : public ConfigurationInterface {
-public:
-    explicit Configuration(std::filesystem::path filepath);
-    [[nodiscard]] Setting GetSetting(ConfigurationName config_name) override;
-
-private:
-    [[nodiscard]] bool LoadConfigurationFile();
-    [[nodiscard]] bool WriteConfigurationFile(json& jsonfile);
-    [[nodiscard]] bool CreateDefaultConfigurationFile();
-
-    std::filesystem::path filepath_;
-    json configData_;
-};
-} // namespace config
 
 NLOHMANN_JSON_NAMESPACE_BEGIN
 
@@ -33,6 +17,21 @@ Overloaded to work with std::optional
  */
 template <typename T>
 struct adl_serializer<std::optional<T>> {
+    /**
+     * @brief Converts any value type to a JSON value
+     *
+     * @param json
+     * @param t
+     */
+    static void to_json(json& json, const std::optional<T>& t)
+    {
+        if (t.has_value()) {
+            json = *t;
+        }
+        else {
+            json = nullptr;
+        }
+    }
     /**
      * @brief Converts a JSON value to any value type
      *
@@ -46,21 +45,6 @@ struct adl_serializer<std::optional<T>> {
         }
         else {
             opt = j.get<T>();
-        }
-    }
-    /**
-     * @brief Converts any value type to a JSON value
-     *
-     * @param json
-     * @param t
-     */
-    static void to_json(json& json, std::optional<T> t)
-    {
-        if (t) {
-            json = *t;
-        }
-        else {
-            json = nullptr;
         }
     }
 };
@@ -114,5 +98,27 @@ struct adl_serializer<std::variant<Ts...>> {
 };
 
 NLOHMANN_JSON_NAMESPACE_END
+
+namespace config {
+
+using json = nlohmann::json;
+class Configuration : public ConfigurationInterface {
+public:
+    explicit Configuration(std::filesystem::path filepath);
+    [[nodiscard]] Setting GetSetting(ConfigurationName config_name) override;
+
+private:
+    [[nodiscard]] bool LoadConfigurationFile();
+    [[nodiscard]] bool WriteConfigurationFile(json& jsonfile);
+    [[nodiscard]] bool CreateDefaultConfigurationFile();
+
+    std::filesystem::path filepath_;
+    json configData_;
+};
+
+void to_json(json& j, const Setting& setting);
+void from_json(const json& j, config::Setting& setting);
+
+} // namespace config
 
 #endif // CONFIGURATION_H

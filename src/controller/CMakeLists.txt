@@ -15,4 +15,5 @@ target_include_directories(ControllerLib
 target_link_libraries(ControllerLib
     PUBLIC 
     ConfigLib
+    spdlog::spdlog
     )
