@@ -1,5 +1,6 @@
 #ifndef CONFIGURATION_INTERFACE_H
 #define CONFIGURATION_INTERFACE_H
+
 #include "ConfigurationName.h"
 #include "Setting.h"
 #include <string>

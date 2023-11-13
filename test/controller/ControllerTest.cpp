@@ -5,6 +5,7 @@
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 #include <memory>
+#include <optional>
 
 using namespace testing;
 
@@ -16,16 +17,28 @@ class ControllerTest : public Test {
         NiceMock<config::MockConfiguration> mock_config;
         // Set up the mock to return the desired configuration settings.
         ON_CALL(mock_config, GetSetting(config::ConfigurationName::kControllerProportionalGain)).WillByDefault(Return<config::Setting>(config::Setting {
-            .name = config::ConfigurationName::kControllerProportionalGain,
-            .value = 0.0,
+            config::ConfigurationName::kControllerProportionalGain,
+            0.0,
+            std::nullopt,
+            std::nullopt,
+            std::nullopt,
+            std::nullopt,
         }));
         ON_CALL(mock_config, GetSetting(config::ConfigurationName::kControllerIntegrativeGain)).WillByDefault(Return<config::Setting>(config::Setting {
-            .name = config::ConfigurationName::kControllerIntegrativeGain,
-            .value = 0.1,
+            config::ConfigurationName::kControllerIntegrativeGain,
+            0.1,
+            std::nullopt,
+            std::nullopt,
+            std::nullopt,
+            std::nullopt,
         }));
         ON_CALL(mock_config, GetSetting(config::ConfigurationName::kControllerDerivativeGain)).WillByDefault(Return<config::Setting>(config::Setting {
-            .name = config::ConfigurationName::kControllerDerivativeGain,
-            .value = 0.0,
+            config::ConfigurationName::kControllerDerivativeGain,
+            0.0,
+            std::nullopt,
+            std::nullopt,
+            std::nullopt,
+            std::nullopt,
         }));
 
         // Create a controller object using the mock configuration.

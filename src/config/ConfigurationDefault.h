@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONFIGURATION_DEFAULT_H
+#define CONFIGURATION_DEFAULT_H
 
 #include "Setting.h"
 #include <cmath>
@@ -41,3 +42,5 @@ const std::vector<Setting> kDefaultConfig = {
 };
 
 } // namespace config
+
+#endif
