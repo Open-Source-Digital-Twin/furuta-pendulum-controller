@@ -8,3 +8,11 @@ TEST(HelloTest, BasicAssertions)
     // Expect equality.
     EXPECT_EQ(7 * 6, 42);
 }
+
+// Demonstrate a leaky test.
+TEST(HelloTest, DISABLED_LeakyTest)
+{
+    int* ptr;
+
+    ptr = new int(7);
+}

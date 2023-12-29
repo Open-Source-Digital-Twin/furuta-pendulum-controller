@@ -10,6 +10,11 @@ find_package(absl CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
 find_package(benchmark CONFIG REQUIRED)
 
+# Add path for custom modules
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+include(Sanitizer)
+
 option(STRICT_BUILD "Enable warnings as errors" ON)
 
 add_subdirectory(src)
