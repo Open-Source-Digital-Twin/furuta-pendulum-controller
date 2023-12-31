@@ -1,8 +1,8 @@
 #include "AngleSensor.h"
+#include "CMakeConfig.h"
 #include "Configuration.h"
 #include "Controller.h"
 #include "DCMotor.h"
-#include "absl/strings/str_join.h"
 #include "spdlog/spdlog.h"
 #include <iostream>
 #include <memory>
@@ -17,12 +17,7 @@ const auto kCycleTime = 1000ms;
 
 int main(int /*unused*/, char** /*unused*/)
 {
-    std::vector<std::string> v = { "foo", "bar", "baz" };
-    std::string s = absl::StrJoin(v, "-");
-
-    spdlog::info("Starting controller.");
-
-    spdlog::warn("Checking if abseil is working: {}", s);
+    spdlog::info("Starting {} version {}.", PROJECT_NAME, PROJECT_VERSION);
 
     spdlog::info("Instantiating motor, sensor and controller.");
     auto dc_motor = std::make_unique<hal::DCMotor>(0.0);
