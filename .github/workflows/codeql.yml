@@ -28,6 +28,8 @@ jobs:
       actions: read
       contents: read
       security-events: write
+    env: 
+      ASAN_OPTIONS: verify_asan_link_order=0
 
     strategy:
       fail-fast: false
