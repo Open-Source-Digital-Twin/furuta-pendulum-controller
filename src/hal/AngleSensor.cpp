@@ -3,8 +3,8 @@
 namespace hal {
 
 namespace {
-    const double kMinAngle_ = 0.0;
-    const double kMaxAngle_ = 360.0;
+    const double kMinAngle = 0.0;
+    const double kMaxAngle = 360.0;
 }
 
 AngleSensor::AngleSensor(double initialAngle)

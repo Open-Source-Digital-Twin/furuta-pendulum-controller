@@ -1,7 +1,6 @@
 #ifndef ANGLE_SENSOR_PROTO_H
 #define ANGLE_SENSOR_PROTO_H
 
-#include "SensorInterface.h"
 #include <google/protobuf/message.h>
 
 namespace Hal {
@@ -14,10 +13,11 @@ public:
     [[nodiscard]] double GetValue(google::protobuf::Message& sensorMessage) override;
 
 private:
-    const double kMinAngle;
-    const double kMaxAngle;
+    const double kMinAngle_;
+    const double kMaxAngle_;
     double angle_;
 };
 
-}
+} // namespace Hal
+
 #endif // ANGLE_SENSOR_PROTO_H

@@ -25,4 +25,5 @@ public:
 };
 
 } // namespace hal
+
 #endif // SENSOR_H

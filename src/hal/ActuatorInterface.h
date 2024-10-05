@@ -25,5 +25,7 @@ public:
     virtual void SetState(ActuatorInputType state) = 0;
     virtual ~ActuatorInterface() = default;
 };
+
 } // namespace hal
+
 #endif // ACTUATOR_H

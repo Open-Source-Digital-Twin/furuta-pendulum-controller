@@ -10,8 +10,8 @@ namespace {
 
 AngleSensorProto::AngleSensorProto(double initialAngle)
     : angle_(initialAngle)
-    , kMinAngle(0.0)
-    , kMaxAngle(0.0)
+    , kMinAngle_(0.0)
+    , kMaxAngle_(0.0)
 {
 }
 
@@ -23,4 +23,4 @@ double AngleSensorProto::GetValue(google::protobuf::Message& sensorMessage)
     return angle;
 }
 
-}
+} // namespace Hal
