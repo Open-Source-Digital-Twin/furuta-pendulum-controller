@@ -36,7 +36,7 @@ bool Configuration::LoadConfigurationFile()
 bool Configuration::WriteConfigurationFile(json& jsonfile)
 {
     if (jsonfile.empty()) {
-        // Another spdlog maybe?
+        spdlog::error("JSON file is empty");
         return false;
     }
 

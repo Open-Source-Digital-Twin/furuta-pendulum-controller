@@ -18,4 +18,5 @@ private:
 };
 
 } // namespace hal
+
 #endif // ANGLE_SENSOR_H
