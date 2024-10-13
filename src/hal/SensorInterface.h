@@ -16,6 +16,7 @@ namespace hal {
 template <typename SensorReturnType, typename SensorInputType>
 class SensorInterface {
 public:
+    virtual ~SensorInterface() = default;
     /**
      * @brief Get the value read by the sensor
      *
