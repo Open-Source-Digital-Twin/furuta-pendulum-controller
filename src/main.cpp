@@ -4,11 +4,10 @@
 #include "Controller.h"
 #include "DCMotor.h"
 #include "spdlog/spdlog.h"
+#include <cstdlib>
 #include <filesystem>
-#include <iostream>
 #include <memory>
 #include <thread>
-#include <vector>
 
 using namespace std::chrono_literals;
 
@@ -35,11 +34,15 @@ int main(int /*unused*/, char** /*unused*/)
 {
     spdlog::info("Starting {} version {}.", PROJECT_NAME, PROJECT_VERSION);
 
-    spdlog::info("Instantiating motor, sensor and controller.");
-    auto dc_motor = std::make_unique<hal::DCMotor>(0.0);
-    [[gnu::unused]] auto angle_sensor = hal::AngleSensor(0.0);
-
+    spdlog::info("Initializing configuration.");
     config::Configuration config(GetConfigurationPath());
+
+    spdlog::info("Instantiating motor.");
+    auto dc_motor = std::make_unique<hal::DCMotor>(0.0);
+    spdlog::info("Instantiating sensor.");
+    auto angle_sensor = std::make_unique<hal::AngleSensor>(0.0);
+    spdlog::info("Instantiating controller.");
+    auto pid_controller = std::make_unique<controller::Controller>(config, kCycleTime);
 
     // auto target_config = config.GetSetting(config::ConfigurationName::kAngleSensorMaxValue).Value<float>();
     // spdlog::critical("Getting config: {}", target_config);
@@ -50,13 +53,13 @@ int main(int /*unused*/, char** /*unused*/)
     // If we try to get value of a non existing config, it'll show all available configs and throw an exception
     // [[gnu::unused]] auto motor_config = config.GetSetting(config::ConfigurationName::kDcMotorSpeed).Value<float>();
 
-    auto pid_controller = controller::Controller(config, kCycleTime);
-
     while (true) {
         std::this_thread::sleep_for(kCycleTime);
-        pid_controller.Read(1.);
-        spdlog::info("Getting controller output: {}", pid_controller.Write());
+        auto input = angle_sensor->GetValue(1.0);
+        pid_controller->Read(input);
+        auto output = pid_controller->Write();
+        dc_motor->SetState(output);
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
