@@ -7,7 +7,14 @@
 #include <memory>
 #include <optional>
 
-using namespace testing;
+using testing::NiceMock;
+using testing::Return;
+using testing::Test;
+using namespace std::chrono_literals;
+
+namespace {
+const auto kCycleTime = 1000ms;
+}
 
 namespace controller {
 
@@ -42,14 +49,14 @@ class ControllerTest : public Test {
         }));
 
         // Create a controller object using the mock configuration.
-        controller_ = std::make_unique<controller::Controller>(mock_config, std::chrono::milliseconds(1000));
+        controller_ = std::make_unique<controller::Controller>(mock_config, kCycleTime);
     }
 
 public:
     std::unique_ptr<controller::Controller> controller_;
 };
 
-TEST_F(ControllerTest, calculate)
+TEST_F(ControllerTest, Calculate)
 {
     // Verify that the controller calculated the correct output.
     EXPECT_EQ(controller_->Write(), 0.0);
