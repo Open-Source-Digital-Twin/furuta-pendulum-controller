@@ -13,3 +13,8 @@ target_include_directories(HalLib
   PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
     )
+
+target_link_libraries(HalLib
+  PUBLIC 
+  spdlog::spdlog
+  )

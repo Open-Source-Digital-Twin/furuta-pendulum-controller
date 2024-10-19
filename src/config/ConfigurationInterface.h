@@ -3,7 +3,6 @@
 
 #include "ConfigurationName.h"
 #include "Setting.h"
-#include <string>
 
 namespace config {
 class ConfigurationInterface {
