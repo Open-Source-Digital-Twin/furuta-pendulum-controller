@@ -5,7 +5,8 @@
 #include "ControllerInterface.h"
 #include <chrono>
 
-namespace tecscontroller {
+//TODO: write documentation to explain TECS approach
+namespace controller {
 
 class TECSController : ControllerInterface<double, double> {
 public:

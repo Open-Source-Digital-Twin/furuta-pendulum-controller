@@ -1,13 +1,9 @@
 #include "TECSController.h"
 #include <cmath>
-namespace tecscontroller {
+namespace controller {
 
 
-class TECSController : public ControllerInterface<double, double> {
 public:
-    double kappa;
-    double ktheta;
-
     TECSController(config::ConfigurationInterface& config, std::chrono::milliseconds cycle_time)
         : kp_(config.GetSetting(config::ConfigurationName::kControllerProportionalGain).ValueByType<double>())
         , ki_(config.GetSetting(config::ConfigurationName::kControllerIntegrativeGain).ValueByType<double>())
@@ -31,6 +27,5 @@ public:
     void Calculate() override {
         // ??
     }
-};
 
 } // namespace tecscontroller
