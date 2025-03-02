@@ -61,7 +61,7 @@ inline std::string ToString(ConfigurationName config_name)
     case ConfigurationName::kControllerMassPendulum:
         return "kControllerMassPendulum";
     case ConfigurationName::kControllerLengthPendulum:
-        return "kControllerLengthPendulum";     
+        return "kControllerLengthPendulum";
     case ConfigurationName::kControllerLengthRotatingArm:
         return "kControllerLengthRotatingArm";
     case ConfigurationName::kControllerMomentInertiaPendulum:
