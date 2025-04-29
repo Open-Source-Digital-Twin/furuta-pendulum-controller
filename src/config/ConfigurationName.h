@@ -18,6 +18,11 @@ enum class ConfigurationName {
     kControllerProportionalGain,
     kControllerIntegrativeGain,
     kControllerDerivativeGain,
+    kControllerMassPendulum,
+    kControllerLengthPendulum,
+    kControllerLengthRotatingArm,
+    kControllerMomentInertiaPendulum,
+    kControllerMomentInertiaRotatingArm
 };
 
 /**
@@ -53,6 +58,16 @@ inline std::string ToString(ConfigurationName config_name)
         return "kControllerIntegrativeGain";
     case ConfigurationName::kControllerDerivativeGain:
         return "kControllerDerivativeGain";
+    case ConfigurationName::kControllerMassPendulum:
+        return "kControllerMassPendulum";
+    case ConfigurationName::kControllerLengthPendulum:
+        return "kControllerLengthPendulum";
+    case ConfigurationName::kControllerLengthRotatingArm:
+        return "kControllerLengthRotatingArm";
+    case ConfigurationName::kControllerMomentInertiaPendulum:
+        return "kControllerMomentInertiaPendulum";
+    case ConfigurationName::kControllerMomentInertiaRotatingArm:
+        return "kControllerMomentInertiaRotatingArm";
     } // Don't add the default case, so that the compiler can warn you.
     return {};
 }
@@ -91,6 +106,21 @@ inline ConfigurationName FromString(const std::string& config_name)
     }
     if (config_name == "kControllerDerivativeGain") {
         return ConfigurationName::kControllerDerivativeGain;
+    }
+    if (config_name == "kControllerMassPendulum") {
+        return ConfigurationName::kControllerMassPendulum;
+    }
+    if (config_name == "kControllerLengthPendulum") {
+        return ConfigurationName::kControllerLengthPendulum;
+    }
+    if (config_name == "kControllerLengthRotatingArm") {
+        return ConfigurationName::kControllerLengthRotatingArm;
+    }
+    if (config_name == "kControllerMomentInertiaPendulum") {
+        return ConfigurationName::kControllerMomentInertiaPendulum;
+    }
+    if (config_name == "kControllerMomentInertiaRotatingArm") {
+        return ConfigurationName::kControllerMomentInertiaRotatingArm;
     }
     spdlog::critical("Trying to parse {} as ConfigurationName", config_name);
     return {};

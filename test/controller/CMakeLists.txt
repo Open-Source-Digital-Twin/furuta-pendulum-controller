@@ -1,5 +1,6 @@
 set(ControllerTestSources 
     ControllerTest.cpp
+    TECSControllerTest.cpp
     )
 
 add_executable(ControllerTest ${ControllerTestSources})
